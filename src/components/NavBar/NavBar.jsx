@@ -24,6 +24,7 @@ export default function NavBar({ user, setUser }) {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
+            <Nav.Link href="/markets">Markets</Nav.Link>
             <Nav.Link href="/orders">Order History</Nav.Link>
             <Nav.Link href="/orders/new">New Order</Nav.Link>
           </Nav>
