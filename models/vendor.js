@@ -11,10 +11,12 @@ const vendorSchema = new Schema(
       type: String,
       required: true,
     },
-    markets: {
-      type: Schema.Types.ObjectId,
-      ref: "Market",
-    },
+    markets: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Market",
+      },
+    ],
   },
   {
     timestamps: true,

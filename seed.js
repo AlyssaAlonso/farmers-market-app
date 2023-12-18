@@ -2,6 +2,9 @@ require("dotenv").config();
 require("./config/database");
 
 const Market = require("./models/market");
+const Vendor = require("./models/vendor");
+const Item = require("./models/item");
+const Category = require("./models/category");
 
 (async function () {
   await Market.deleteMany({});
@@ -69,4 +72,55 @@ const Market = require("./models/market");
         "Amish baked goods, pickles & olives, frozin pizzas, hand made soaps, bakery items, artisan breads, cheese, Italian specialties, frozen fresh pastas, sauces, frozen prepared fish and Maryland crab cakes, Polish delicacies, hormone-free and antibiotic free grass fed meats, and poultry. Free range eggs, Italian ices, ice cream, and much more!",
     },
   ]);
+
+  await Vendor.deleteMany({});
+  const vendors = await Vendor.create([
+    {
+      name: "Spoon Me Soups",
+      description:
+        "When it comes to creating exciting and delicious artisanal soups, Spoon Me Soups has perfected the art. We’re entirely self-taught. Everything we know about crafting chilled and frozen soup recipes comes from hard work, dedication, and passion in the kitchen. We have an undying love for borrowing from world cuisine to create something distinctly unique. Bergen County, NJ residents who want to taste a flair for the exotic love of our creations. We’re locally-owned and -operated. Our owner is the operator, chef, delivery driver, and the point person at farmer’s markets throughout Bergen County, NJ and the surrounding area.",
+      markets: [markets[0], markets[4]],
+    },
+    {
+      name: "Valley Shepherd Creamery",
+      description:
+        "We are an old fashioned creamery Located on 120 rolling acres in Long Valley, Morris County, NJ, within an hour of New York City! We welcome you and your family to a unique farm experience in New Jersey. We have combined years of artisan cheesemaking expertise with modern equipment from around the world and age old European dairy farming practices to create Valley Shepherd Creamery. We take pride in being able to educate and involve the visitor in daily life of a real working sheep dairy while creating over fifty artisan dairy products.",
+      markets: [markets[1], markets[2], markets[4]],
+    },
+    {
+      name: "Hudson Bakery",
+      description:
+        "Combining centuries-old traditions with the passion of skilled artisans.",
+      markets: [markets[3], markets[5], markets[6]],
+    },
+  ]);
+
+  await Category.deleteMany({});
+  const categories = await Category.create([
+    { name: "Produce", sortOrder: 10 },
+    { name: "Dairy", sortOrder: 20 },
+    { name: "Baked Goods", sortOrder: 30 },
+    { name: "Preserves and Jams", sortOrder: 40 },
+    { name: "Crafts and Handmade Goods", sortOrder: 50 },
+    { name: "Flowers and Plants", sortOrder: 60 },
+    { name: "Specialty Foods", sortOrder: 70 },
+    { name: "Snacks", sortOrder: 80 },
+    { name: "Beverages", sortOrder: 90 },
+  ]);
+
+  await Item.deleteMany({});
+  const items = await Item.create([
+    {
+      name: "Mug",
+      description: "Blue and white coffee mug",
+      vendor: vendors[0],
+      category: categories[4],
+      price: 5.95,
+      reviews: [],
+    },
+  ]);
+
+  console.log(items);
+
+  process.exit();
 })();
