@@ -14,9 +14,9 @@ export default function NavBar({ user, setUser }) {
   }
 
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar expand="lg" className="">
       <Container fluid>
-        <Navbar.Brand href="/">Online Farmer's Market</Navbar.Brand>
+        <Navbar.Brand href="/">Wholesome Harvest</Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse>
           <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: "150px" }}>

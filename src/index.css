@@ -154,6 +154,25 @@ button[type="submit"] {
 
  */
 
+main {
+  /* background-color: #d2e3c3; */
+}
+
+nav {
+  background-color: #00806c;
+}
+
+a.nav-link,
+a.navbar-brand {
+  /* color: #d2e3c3; */
+  color: white;
+}
+
+a.nav-link:hover,
+a.navbar-brand:hover {
+  color: #d2e3c3;
+}
+
 .cards-container {
   display: flex;
   justify-content: center;
@@ -186,6 +205,9 @@ button[type="submit"] {
   justify-content: space-between;
   text-align: left;
   padding: 20px;
+  background-color: white;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 .card-links {
