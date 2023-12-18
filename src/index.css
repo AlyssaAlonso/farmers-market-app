@@ -163,8 +163,7 @@ button[type="submit"] {
 
 .market-card {
   height: auto;
-  width: 20vw;
-  min-width: 300px;
+  width: 320px;
   box-shadow: 0px 0px 10px 2px #d0d7de;
   border-radius: 20px;
   margin: 0 0.5vw 35px;
@@ -173,7 +172,7 @@ button[type="submit"] {
 .card-image {
   background-position: center;
   background-size: cover;
-  height: 250px;
+  height: 180px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   margin: 0;
@@ -183,7 +182,7 @@ button[type="submit"] {
 .card-content {
   display: flex;
   flex-direction: column;
-  height: auto;
+  height: 270px;
   justify-content: space-between;
   text-align: left;
   padding: 20px;
