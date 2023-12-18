@@ -20,6 +20,10 @@ export default function MarketCard({ market }) {
         <p>{market.dayOfWeek}</p>
         <p>{market.startDate}</p>
         <p>{market.endDate}</p>
+
+        <div class="card-links">
+          <a href={`/markets/${market.name}`}>View Offerings</a>
+        </div>
       </div>
     </div>
   );

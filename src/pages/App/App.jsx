@@ -6,6 +6,7 @@ import AuthPage from "../AuthPage/AuthPage";
 import NewOrderPage from "../NewOrderPage/NewOrderPage";
 import OrderHistoryPage from "../OrderHistoryPage/OrderHistoryPage";
 import MarketsPage from "../MarketsPage/MarketsPage";
+import MarketDetailPage from "../MarketDetailPage/MarketDetailPage";
 import NavBar from "../../components/NavBar/NavBar";
 
 export default function App() {
@@ -21,6 +22,7 @@ export default function App() {
             <Route path="/orders/new" element={<NewOrderPage />} />
             <Route path="/orders" element={<OrderHistoryPage />} />
             <Route path="/markets" element={<MarketsPage />} />
+            <Route path="/markets/:marketName" element={<MarketDetailPage />} />
           </Routes>
         </>
       ) : (
