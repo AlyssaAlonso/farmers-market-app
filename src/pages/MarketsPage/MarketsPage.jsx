@@ -20,7 +20,7 @@ export default function MarketsPage() {
 
   return (
     <>
-      <div>
+      <div class="cards-container">
         {markets.map((market) => {
           return <MarketCard key={market._id} market={market} />;
         })}
