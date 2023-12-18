@@ -17,20 +17,16 @@ export default function NavBar({ user, setUser }) {
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
         <Navbar.Brand href="/">Online Farmer's Market</Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
-          <Nav
-            className="me-auto my-2 my-lg-0"
-            style={{ maxHeight: "100px" }}
-            navbarScroll
-          >
+        <Navbar.Toggle />
+        <Navbar.Collapse>
+          <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: "150px" }}>
             <Nav.Link href="/markets">Markets</Nav.Link>
             <Nav.Link href="/orders">Order History</Nav.Link>
             <Nav.Link href="/orders/new">New Order</Nav.Link>
+            <Nav.Link href="" onClick={handleLogOut}>
+              Log Out
+            </Nav.Link>
           </Nav>
-          <Nav.Link href="" onClick={handleLogOut}>
-            Log Out
-          </Nav.Link>
         </Navbar.Collapse>
       </Container>
     </Navbar>
