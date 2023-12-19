@@ -28,16 +28,16 @@ export default function MarketCard({ market }) {
   });
 
   return (
-    <div class="market-card">
+    <div className="market-card">
       <div
-        class="card-image"
+        className="card-image"
         style={{
           background: `url('https://source.unsplash.com/collection/202618/320x180?sig=${
             Date.now() + randomNumber
           }')`,
         }}
       ></div>
-      <div class="card-content">
+      <div className="card-content">
         <h2>{market.name}</h2>
         <p>{market.address}</p>
         <p>
@@ -48,7 +48,7 @@ export default function MarketCard({ market }) {
           {formattedStartDate} - {formattedEndDate}
         </p>
 
-        <div class="card-links">
+        <div className="card-links">
           <a href={`/markets/${market.name}`}>View Offerings</a>
         </div>
       </div>
