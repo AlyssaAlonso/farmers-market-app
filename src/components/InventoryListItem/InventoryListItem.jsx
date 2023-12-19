@@ -1,12 +1,12 @@
-export default function InventoryListItem({ marketItem, handleAddToOrder }) {
+export default function InventoryListItem({ item, handleAddToOrder }) {
   return (
     <div className="InventoryListItem">
-      <div className="name">{marketItem.name}</div>
+      <div className="name">{item.name}</div>
       <div className="buy">
-        <span>${marketItem.price.toFixed(2)}</span>
+        <span>${item.price.toFixed(2)}</span>
         <button
           className="btn-sm"
-          onClick={() => handleAddToOrder(marketItem._id)}
+          onClick={() => handleAddToOrder(item._id)}
         >
           ADD
         </button>
