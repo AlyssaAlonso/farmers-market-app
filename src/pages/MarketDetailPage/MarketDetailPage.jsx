@@ -53,7 +53,7 @@ export default function MarketDetailPage({ user, setUser, cart, setCart }) {
       <h1>{market.name}</h1>
       <h3>Items:</h3>
       <InventoryList
-        marketItems={marketItems}
+        allItems={marketItems}
         handleAddToOrder={handleAddToOrder}
       />
       <br />
