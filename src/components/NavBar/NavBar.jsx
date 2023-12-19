@@ -19,8 +19,9 @@ export default function NavBar({ user, setUser }) {
         <Navbar.Brand href="/">Wholesome Harvest</Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse>
-          <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: "150px" }}>
+          <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: "190px" }}>
             <Nav.Link href="/markets">Markets</Nav.Link>
+            <Nav.Link href="/vendors">Vendors</Nav.Link>
             <Nav.Link href="/orders">Orders</Nav.Link>
             <Nav.Link href="/orders/new">Cart</Nav.Link>
             <Nav.Link href="" onClick={handleLogOut}>
