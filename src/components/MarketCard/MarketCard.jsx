@@ -29,7 +29,7 @@ export default function MarketCard({ market }) {
   });
 
   return (
-    <div className="market-card">
+    <div className="card-container">
       <div
         className="card-image"
         style={{
