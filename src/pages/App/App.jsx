@@ -11,6 +11,7 @@ import NavBar from "../../components/NavBar/NavBar";
 
 export default function App() {
   const [user, setUser] = useState(getUser());
+  const [cart, setCart] = useState(null);
 
   return (
     <main className="App">
@@ -21,19 +22,47 @@ export default function App() {
             {/* Route components in here */}
             <Route
               path="/orders/new"
-              element={<NewOrderPage user={user} setUser={setUser} />}
+              element={
+                <NewOrderPage
+                  user={user}
+                  setUser={setUser}
+                  cart={cart}
+                  setCart={setCart}
+                />
+              }
             />
             <Route
               path="/orders"
-              element={<OrderHistoryPage user={user} setUser={setUser} />}
+              element={
+                <OrderHistoryPage
+                  user={user}
+                  setUser={setUser}
+                  cart={cart}
+                  setCart={setCart}
+                />
+              }
             />
             <Route
               path="/markets"
-              element={<MarketsPage user={user} setUser={setUser} />}
+              element={
+                <MarketsPage
+                  user={user}
+                  setUser={setUser}
+                  cart={cart}
+                  setCart={setCart}
+                />
+              }
             />
             <Route
               path="/markets/:marketId"
-              element={<MarketDetailPage user={user} setUser={setUser} />}
+              element={
+                <MarketDetailPage
+                  user={user}
+                  setUser={setUser}
+                  cart={cart}
+                  setCart={setCart}
+                />
+              }
             />
           </Routes>
         </>

@@ -8,40 +8,37 @@ import { Link, useNavigate } from "react-router-dom";
 import InventoryList from "../../components/InventoryList/InventoryList";
 import { useLocation } from "react-router-dom";
 
-export default function MarketDetailPage({ user, setUser }) {
+export default function MarketDetailPage({ user, setUser, cart, setCart }) {
   let { marketId } = useParams();
   const [market, setMarket] = useState({});
   const [marketItems, setMarketItems] = useState([]);
-  const [allVendors, setAllVendors] = useState([]);
   const [marketVendors, setMarketVendors] = useState([]);
-  const [cart, setCart] = useState(null);
   const navigate = useNavigate();
 
   useEffect(function () {
-    async function getItems() {
-      const items = await itemsAPI.getAll();
-      setMarketItems(items);
-    }
-    getItems();
-
-    async function getMarketVendors() {
+    async function getMarketData() {
       const market = await marketsAPI.getById(marketId);
       setMarket(market);
 
       const vendors = await vendorsAPI.getAll();
-      setAllVendors(vendors);
-
       const marketVendors = vendors.filter((vendor) => {
         return vendor.markets.some((market) => market._id === marketId);
       });
       setMarketVendors(marketVendors);
-      console.log(marketVendors);
+
+      const items = await itemsAPI.getAll();
+      const marketItems = items.filter((item) => {
+        return marketVendors.some((vendor) => vendor._id === item.vendor._id);
+      });
+      console.log(marketItems);
+      setMarketItems(marketItems);
     }
-    getMarketVendors();
+    getMarketData();
 
     // Load cart (a cart is the unpaid order for the logged in user)
     async function getCart() {
       const cart = await ordersAPI.getCart();
+      console.log("cart: ", cart);
       setCart(cart);
     }
     getCart();
@@ -69,9 +66,7 @@ export default function MarketDetailPage({ user, setUser }) {
     <>
       <h1>{market.name}</h1>
       <InventoryList
-        marketItems={marketItems.filter((item) =>
-          allVendors.some((vendor) => vendor._id === item.vendor)
-        )}
+        marketItems={marketItems}
         handleAddToOrder={handleAddToOrder}
       />
       <ul>
