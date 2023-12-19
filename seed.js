@@ -79,19 +79,42 @@ const Category = require("./models/category");
       name: "Spoon Me Soups",
       description:
         "When it comes to creating exciting and delicious artisanal soups, Spoon Me Soups has perfected the art. We’re entirely self-taught. Everything we know about crafting chilled and frozen soup recipes comes from hard work, dedication, and passion in the kitchen. We have an undying love for borrowing from world cuisine to create something distinctly unique. Bergen County, NJ residents who want to taste a flair for the exotic love of our creations. We’re locally-owned and -operated. Our owner is the operator, chef, delivery driver, and the point person at farmer’s markets throughout Bergen County, NJ and the surrounding area.",
-      markets: [markets[0], markets[4]],
+      markets: [
+        markets[0]._id,
+        markets[1]._id,
+        markets[2]._id,
+        markets[3]._id,
+        markets[4]._id,
+        markets[5]._id,
+        markets[6]._id,
+      ],
     },
     {
       name: "Valley Shepherd Creamery",
       description:
         "We are an old fashioned creamery Located on 120 rolling acres in Long Valley, Morris County, NJ, within an hour of New York City! We welcome you and your family to a unique farm experience in New Jersey. We have combined years of artisan cheesemaking expertise with modern equipment from around the world and age old European dairy farming practices to create Valley Shepherd Creamery. We take pride in being able to educate and involve the visitor in daily life of a real working sheep dairy while creating over fifty artisan dairy products.",
-      markets: [markets[1], markets[2], markets[4]],
+      markets: [
+        markets[1]._id,
+        markets[2]._id,
+        markets[3]._id,
+        markets[4]._id,
+        markets[5]._id,
+        markets[6]._id,
+      ],
     },
     {
       name: "Hudson Bakery",
       description:
         "Combining centuries-old traditions with the passion of skilled artisans.",
-      markets: [markets[3], markets[5], markets[6]],
+      markets: [
+        markets[0]._id,
+        markets[1]._id,
+        markets[2]._id,
+        markets[3]._id,
+        markets[4]._id,
+        markets[5]._id,
+        markets[6]._id,
+      ],
     },
   ]);
 
@@ -114,6 +137,23 @@ const Category = require("./models/category");
       name: "Mug",
       description: "Blue and white coffee mug",
       vendor: vendors[0],
+      category: categories[4],
+      price: 5.95,
+      reviews: [],
+    },
+
+    {
+      name: "Mug",
+      description: "Blue and white coffee mug",
+      vendor: vendors[1],
+      category: categories[4],
+      price: 5.95,
+      reviews: [],
+    },
+    {
+      name: "Mug",
+      description: "Blue and white coffee mug",
+      vendor: vendors[2],
       category: categories[4],
       price: 5.95,
       reviews: [],

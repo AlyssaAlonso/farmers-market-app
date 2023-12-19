@@ -32,7 +32,7 @@ export default function App() {
               element={<MarketsPage user={user} setUser={setUser} />}
             />
             <Route
-              path="/markets/:marketName"
+              path="/markets/:marketId"
               element={<MarketDetailPage user={user} setUser={setUser} />}
             />
           </Routes>

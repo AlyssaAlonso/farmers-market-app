@@ -1,7 +1,11 @@
 const Item = require("../../models/item");
 
 async function index(req, res) {
-  const items = await Item.find({}).sort("name").populate("category").exec();
+  const items = await Item.find({})
+    .sort("name")
+    .populate("vendor")
+    .populate("category")
+    .exec();
   items.sort((a, b) => a.category.sortOrder - b.category.sortOrder);
   res.json(items);
 }

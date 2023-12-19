@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function MarketCard({ market }) {
   const randomNumber = Math.floor(Math.random() * 1000); // Generating a random number
@@ -49,7 +50,14 @@ export default function MarketCard({ market }) {
         </p>
 
         <div className="card-links">
-          <a href={`/markets/${market.name}`}>View Offerings</a>
+          <Link
+            to={{
+              pathname: `/markets/${market._id}`,
+              state: { marketData: market },
+            }}
+          >
+            View Offerings
+          </Link>
         </div>
       </div>
     </div>

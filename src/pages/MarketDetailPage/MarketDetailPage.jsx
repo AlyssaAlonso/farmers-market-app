@@ -2,14 +2,18 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import * as itemsAPI from "../../utilities/items-api";
 import * as ordersAPI from "../../utilities/orders-api";
+import * as marketsAPI from "../../utilities/markets-api";
 import * as vendorsAPI from "../../utilities/vendors-api";
 import { Link, useNavigate } from "react-router-dom";
 import InventoryList from "../../components/InventoryList/InventoryList";
+import { useLocation } from "react-router-dom";
 
 export default function MarketDetailPage({ user, setUser }) {
-  let { marketName } = useParams();
+  let { marketId } = useParams();
+  const [market, setMarket] = useState({});
   const [marketItems, setMarketItems] = useState([]);
   const [allVendors, setAllVendors] = useState([]);
+  const [marketVendors, setMarketVendors] = useState([]);
   const [cart, setCart] = useState(null);
   const navigate = useNavigate();
 
@@ -20,16 +24,20 @@ export default function MarketDetailPage({ user, setUser }) {
     }
     getItems();
 
-    async function getVendors() {
+    async function getMarketVendors() {
+      const market = await marketsAPI.getById(marketId);
+      setMarket(market);
+
       const vendors = await vendorsAPI.getAll();
+      setAllVendors(vendors);
 
-      const marketVendors = vendors.filter((vendor) =>
-        vendor.markets.includes(marketName)
-      );
-
-      setAllVendors(marketVendors);
+      const marketVendors = vendors.filter((vendor) => {
+        return vendor.markets.some((market) => market._id === marketId);
+      });
+      setMarketVendors(marketVendors);
+      console.log(marketVendors);
     }
-    getVendors();
+    getMarketVendors();
 
     // Load cart (a cart is the unpaid order for the logged in user)
     async function getCart() {
@@ -59,13 +67,18 @@ export default function MarketDetailPage({ user, setUser }) {
 
   return (
     <>
-      <h1>{marketName}</h1>
+      <h1>{market.name}</h1>
       <InventoryList
         marketItems={marketItems.filter((item) =>
           allVendors.some((vendor) => vendor._id === item.vendor)
         )}
         handleAddToOrder={handleAddToOrder}
       />
+      <ul>
+        {marketVendors.map((vendor) => (
+          <li key={vendor._id}>{vendor.name} </li>
+        ))}
+      </ul>
     </>
   );
 }

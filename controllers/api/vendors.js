@@ -1,7 +1,7 @@
 const Vendor = require("../../models/vendor");
 
 async function index(req, res) {
-  const vendors = await Vendor.find({}).sort("name");
+  const vendors = await Vendor.find({}).sort("name").populate("markets").exec();
   res.json(vendors);
 }
 
