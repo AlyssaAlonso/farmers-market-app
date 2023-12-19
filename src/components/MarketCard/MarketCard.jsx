@@ -32,10 +32,9 @@ export default function MarketCard({ market }) {
       <div
         class="card-image"
         style={{
-          background: `url('https://source.unsplash.com/collection/353005/1600x900?sig=${
+          background: `url('https://source.unsplash.com/collection/202618/320x180?sig=${
             Date.now() + randomNumber
-          }') no-repeat center center`,
-          WebkitBackgroundSize: "cover",
+          }')`,
         }}
       ></div>
       <div class="card-content">
