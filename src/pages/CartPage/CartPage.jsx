@@ -1,5 +1,7 @@
 export default function NewOrderPage() {
   return (
-    <h1>NewOrderPage</h1>
+    <>
+      <h1>CartPage</h1>
+    </>
   );
 }
