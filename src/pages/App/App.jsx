@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { getUser } from "../../utilities/users-service";
 import "./App.css";
 import AuthPage from "../AuthPage/AuthPage";
-import CartPage from "../CartPage/CartPage";
+import NewOrderPage from "../NewOrderPage/NewOrderPage";
 import OrderHistoryPage from "../OrderHistoryPage/OrderHistoryPage";
 import MarketsPage from "../MarketsPage/MarketsPage";
 import MarketDetailPage from "../MarketDetailPage/MarketDetailPage";
@@ -21,9 +21,9 @@ export default function App() {
           <Routes>
             {/* Route components in here */}
             <Route
-              path="/cart"
+              path="/orders/new"
               element={
-                <CartPage
+                <NewOrderPage
                   user={user}
                   setUser={setUser}
                   cart={cart}

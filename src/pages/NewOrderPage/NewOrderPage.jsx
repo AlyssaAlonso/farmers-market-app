@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import * as itemsAPI from "../../utilities/items-api";
 import * as ordersAPI from "../../utilities/orders-api";
 import { Link, useNavigate } from "react-router-dom";
 import OrderDetail from "../../components/OrderDetail/OrderDetail";

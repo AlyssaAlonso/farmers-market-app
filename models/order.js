@@ -81,20 +81,19 @@ orderSchema.methods.addItemToCart = async function (itemId) {
 
 // Instance method to set an item's qty in the cart
 orderSchema.methods.setItemQty = function (itemId, newQty) {
-  // this keyword is bound to the cart (order doc)
   const cart = this;
-  // Find the line item in the cart for the menu item
-  const lineItem = cart.lineItems.find((lineItem) =>
+  const lineItemIndex = cart.lineItems.findIndex((lineItem) =>
     lineItem.item._id.equals(itemId)
   );
-  if (lineItem && newQty <= 0) {
-    // Calling deleteOne, removes the lineItem subdoc from the cart.lineItems array
-    lineItem.deleteOne();
-  } else if (lineItem) {
-    // Set the new qty - positive value is assured thanks to prev if
-    lineItem.qty = newQty;
+
+  if (lineItemIndex !== -1 && newQty <= 0) {
+    // Remove the lineItem from the lineItems array
+    cart.lineItems.splice(lineItemIndex, 1);
+  } else if (lineItemIndex !== -1) {
+    // Set the new quantity
+    cart.lineItems[lineItemIndex].qty = newQty;
   }
-  // return the save() method's promise
+
   return cart.save();
 };
 
