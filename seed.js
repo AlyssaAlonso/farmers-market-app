@@ -134,7 +134,7 @@ const Category = require("./models/category");
   await Item.deleteMany({});
   const items = await Item.create([
     {
-      name: "Mug",
+      name: "Blue Mug",
       description: "Blue and white coffee mug",
       vendor: vendors[0],
       category: categories[4],
@@ -143,16 +143,16 @@ const Category = require("./models/category");
     },
 
     {
-      name: "Mug",
-      description: "Blue and white coffee mug",
+      name: "Red Mug",
+      description: "Red and white coffee mug",
       vendor: vendors[1],
       category: categories[4],
       price: 5.95,
       reviews: [],
     },
     {
-      name: "Mug",
-      description: "Blue and white coffee mug",
+      name: "Green Mug",
+      description: "Green and white coffee mug",
       vendor: vendors[2],
       category: categories[4],
       price: 5.95,
