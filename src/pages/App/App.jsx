@@ -7,6 +7,8 @@ import NewOrderPage from "../NewOrderPage/NewOrderPage";
 import OrderHistoryPage from "../OrderHistoryPage/OrderHistoryPage";
 import MarketsPage from "../MarketsPage/MarketsPage";
 import MarketDetailPage from "../MarketDetailPage/MarketDetailPage";
+import VendorsPage from "../VendorsPage/VendorsPage";
+import VendorDetailPage from "../VendorDetailPage/VendorDetailPage";
 import NavBar from "../../components/NavBar/NavBar";
 
 export default function App() {
@@ -57,6 +59,28 @@ export default function App() {
               path="/markets/:marketId"
               element={
                 <MarketDetailPage
+                  user={user}
+                  setUser={setUser}
+                  cart={cart}
+                  setCart={setCart}
+                />
+              }
+            />
+            <Route
+              path="/vendors"
+              element={
+                <VendorsPage
+                  user={user}
+                  setUser={setUser}
+                  cart={cart}
+                  setCart={setCart}
+                />
+              }
+            />
+            <Route
+              path="/vendors/:vendorId"
+              element={
+                <VendorDetailPage
                   user={user}
                   setUser={setUser}
                   cart={cart}

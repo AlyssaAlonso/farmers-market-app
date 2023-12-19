@@ -176,7 +176,7 @@ a.navbar-brand:hover {
   padding: 30px 1vw;
 }
 
-.market-card {
+.card-container {
   height: auto;
   width: 320px;
   box-shadow: 0px 0px 10px 2px #d0d7de;
@@ -197,7 +197,9 @@ a.navbar-brand:hover {
 .card-content {
   display: flex;
   flex-direction: column;
-  height: 270px;
+  height: auto;
+  min-height: 270px;
+  width: 320px;
   justify-content: space-between;
   text-align: left;
   padding: 20px;
