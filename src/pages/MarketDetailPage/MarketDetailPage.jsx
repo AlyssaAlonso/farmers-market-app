@@ -1,19 +1,17 @@
 import { useParams } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import * as itemsAPI from "../../utilities/items-api";
 import * as ordersAPI from "../../utilities/orders-api";
 import * as marketsAPI from "../../utilities/markets-api";
 import * as vendorsAPI from "../../utilities/vendors-api";
 import { Link, useNavigate } from "react-router-dom";
 import InventoryList from "../../components/InventoryList/InventoryList";
-import { useLocation } from "react-router-dom";
 
 export default function MarketDetailPage({ user, setUser, cart, setCart }) {
   let { marketId } = useParams();
   const [market, setMarket] = useState({});
   const [marketItems, setMarketItems] = useState([]);
   const [marketVendors, setMarketVendors] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(function () {
     async function getMarketData() {
@@ -30,7 +28,6 @@ export default function MarketDetailPage({ user, setUser, cart, setCart }) {
       const marketItems = items.filter((item) => {
         return marketVendors.some((vendor) => vendor._id === item.vendor._id);
       });
-      console.log(marketItems);
       setMarketItems(marketItems);
     }
     getMarketData();
@@ -38,7 +35,6 @@ export default function MarketDetailPage({ user, setUser, cart, setCart }) {
     // Load cart (a cart is the unpaid order for the logged in user)
     async function getCart() {
       const cart = await ordersAPI.getCart();
-      console.log("cart: ", cart);
       setCart(cart);
     }
     getCart();
@@ -52,23 +48,16 @@ export default function MarketDetailPage({ user, setUser, cart, setCart }) {
     setCart(updatedCart);
   }
 
-  async function handleChangeQty(itemId, newQty) {
-    const updatedCart = await ordersAPI.setItemQtyInCart(itemId, newQty);
-    setCart(updatedCart);
-  }
-
-  async function handleCheckout() {
-    await ordersAPI.checkout();
-    navigate("/orders");
-  }
-
   return (
     <>
       <h1>{market.name}</h1>
+      <h3>Items:</h3>
       <InventoryList
         marketItems={marketItems}
         handleAddToOrder={handleAddToOrder}
       />
+      <br />
+      <h3>Featured Vendors:</h3>
       <ul>
         {marketVendors.map((vendor) => (
           <li key={vendor._id}>{vendor.name} </li>
