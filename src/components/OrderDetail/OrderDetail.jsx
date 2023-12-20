@@ -20,29 +20,24 @@ export default function OrderDetail({
   return (
     <div className="OrderDetail">
       <div>
-        {order.isPaid ? <h2>ORDER {order.orderId}</h2> : <h2>NEW ORDER</h2>}
-        <h3>{new Date(order.updatedAt).toLocaleDateString()}</h3>
-      </div>
-
-      <div>
         {lineItems.length ? (
           <>
             {lineItems}
-            <section className="total">
+            <div className="space-between-container">
               {order.isPaid ? (
-                <span>TOTAL&nbsp;&nbsp;</span>
+                <h5>Total&nbsp;&nbsp;</h5>
               ) : (
                 <button
                   className="btn-sm"
                   onClick={handleCheckout}
                   disabled={!lineItems.length}
                 >
-                  CHECKOUT
+                  Checkout
                 </button>
               )}
-              <span>{order.totalQty}</span>
-              <span>${order.orderTotal.toFixed(2)}</span>
-            </section>
+
+              <h5>${order.orderTotal.toFixed(2)}</h5>
+            </div>
           </>
         ) : (
           <div>Your cart is empty</div>
