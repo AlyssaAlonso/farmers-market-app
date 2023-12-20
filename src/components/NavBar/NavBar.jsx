@@ -22,7 +22,7 @@ export default function NavBar({ user, setUser }) {
           <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: "230px" }}>
             <Nav.Link href="/markets">Markets</Nav.Link>
             <Nav.Link href="/vendors">Vendors</Nav.Link>
-            <Nav.Link href="/items">Items</Nav.Link>
+            <Nav.Link href="/items">All Items</Nav.Link>
             <Nav.Link href="/orders">Orders</Nav.Link>
             <Nav.Link href="/orders/new">Cart</Nav.Link>
             <Nav.Link href="" onClick={handleLogOut}>
