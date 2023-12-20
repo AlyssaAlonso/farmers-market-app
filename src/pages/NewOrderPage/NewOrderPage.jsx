@@ -49,14 +49,14 @@ export default function NewOrderPage({
 
   return (
     <>
-      <main className="NewOrderPage">
-        <h1>Cart</h1>
+      <div className="orders-container">
+        <h1>Order Summary:</h1>
         <OrderDetail
           order={cart}
           handleChangeQty={handleChangeQty}
           handleCheckout={handleCheckout}
         />
-      </main>
+      </div>
     </>
   );
 }

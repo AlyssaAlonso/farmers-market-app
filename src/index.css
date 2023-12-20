@@ -184,6 +184,19 @@ a.navbar-brand:hover {
   padding: 30px 1vw;
 }
 
+.orders-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 30px 1vw;
+}
+
+.space-between-container {
+  display: flex;
+  justify-content: space-between;
+}
+
 .card-container {
   height: auto;
   width: 320px;
@@ -239,4 +252,17 @@ button.btn-sm,
 button.btn-sm:hover,
 .button-link:hover {
   color: #d2e3c3;
+}
+
+button.btn-xs {
+  display: inline-block;
+  padding: 0px 20px;
+  margin: 0 10px;
+  text-align: center;
+  text-decoration: none;
+  background-color: #00806c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
