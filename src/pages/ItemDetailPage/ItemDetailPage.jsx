@@ -2,16 +2,19 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import * as itemsAPI from "../../utilities/items-api";
 import * as ordersAPI from "../../utilities/orders-api";
+import * as reviewsAPI from "../../utilities/reviews-api";
 import InventoryListItem from "../../components/InventoryListItem/InventoryListItem";
 
 export default function ItemDetailPage({ user, setUser, cart, setCart }) {
   let { itemId } = useParams();
   const [item, setItem] = useState({});
+  const [reviews, setReviews] = useState([]);
 
   useEffect(function () {
     async function getItem() {
       const item = await itemsAPI.getById(itemId);
       setItem(item);
+      setReviews(item.reviews);
     }
     getItem();
 
