@@ -19,13 +19,13 @@ export default function OrderHistoryPage({ user, setUser }) {
   }, []);
 
   return (
-    <main className="OrderHistoryPage">
+    <div className="orders-container">
+      <h1>Order History</h1>
       <OrderList
         orders={orders}
         activeOrder={activeOrder}
         setActiveOrder={setActiveOrder}
       />
-      <OrderDetail order={activeOrder} />
-    </main>
+    </div>
   );
 }
