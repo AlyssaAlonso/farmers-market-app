@@ -50,7 +50,7 @@ export default function NewOrderPage({
   return (
     <>
       <div className="orders-container">
-        <h1>Order Summary:</h1>
+        <h1>Order Summary</h1>
         <OrderDetail
           order={cart}
           handleChangeQty={handleChangeQty}

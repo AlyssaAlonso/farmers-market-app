@@ -4,7 +4,7 @@ export default function LineItem({ lineItem, isPaid, handleChangeQty }) {
   return (
     <div className="">
       <div className="line-item-card">
-        <div>
+        <div className="item-name">
           <h4>{lineItem.item.name}</h4>
           {lineItem.qty > 1 ? (
             <p>each ${lineItem.item.price.toFixed(2)}</p>
