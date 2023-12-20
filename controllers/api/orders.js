@@ -1,4 +1,5 @@
 const Order = require("../../models/order");
+const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY);
 
 async function getAllForUser(req, res) {
   const orders = await Order.find({ user: req.user._id, isPaid: true }).sort(
@@ -35,10 +36,42 @@ async function checkout(req, res) {
   res.json(cart);
 }
 
+// Create a checkout session for the cart
+async function createCheckoutSession(req, res) {
+  const cart = await Order.getCart(req.user._id);
+
+  const lineItems = cart.lineItems.map((lineItem) => ({
+    price_data: {
+      currency: "usd",
+      product_data: {
+        name: lineItem.item.name,
+      },
+      unit_amount: lineItem.item.price * 100, // Amount in cents
+    },
+    quantity: lineItem.qty,
+  }));
+
+  try {
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ["card"],
+      line_items: lineItems,
+      mode: "payment",
+      success_url: "http://localhost:3000/orders/",
+      cancel_url: "http://localhost:3000/orders/new",
+    });
+
+    res.json({ sessionId: session.id });
+  } catch (error) {
+    console.error("Error creating checkout session:", error);
+    res.status(500).json({ error: "Failed to create checkout session" });
+  }
+}
+
 module.exports = {
   cart,
   addToCart,
   setItemQtyInCart,
   checkout,
   getAllForUser,
+  createCheckoutSession,
 };

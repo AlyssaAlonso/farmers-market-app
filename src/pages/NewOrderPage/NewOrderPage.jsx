@@ -3,7 +3,13 @@ import * as ordersAPI from "../../utilities/orders-api";
 import { Link, useNavigate } from "react-router-dom";
 import OrderDetail from "../../components/OrderDetail/OrderDetail";
 
-export default function NewOrderPage({ user, setUser, cart, setCart }) {
+export default function NewOrderPage({
+  user,
+  setUser,
+  cart,
+  setCart,
+  stripePromise,
+}) {
   const navigate = useNavigate();
 
   useEffect(function () {
@@ -22,8 +28,23 @@ export default function NewOrderPage({ user, setUser, cart, setCart }) {
   }
 
   async function handleCheckout() {
-    await ordersAPI.checkout();
-    navigate("/orders");
+    try {
+      const response = await ordersAPI.createCheckoutSession(); // Call the function to initiate checkout
+      const { sessionId } = response; // Assuming the API returns sessionId
+
+      // Redirect to Stripe Checkout with the received sessionId
+      const stripe = await stripePromise; // Assuming Stripe has been initialized
+      const { error } = await stripe.redirectToCheckout({ sessionId });
+
+      if (error) {
+        throw new Error(error.message);
+      } else {
+        // Redirect to Order History page after successful payment
+        navigate("/orders");
+      }
+    } catch (error) {
+      console.error("Error during checkout:", error.message);
+    }
   }
 
   return (

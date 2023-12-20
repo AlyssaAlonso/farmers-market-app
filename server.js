@@ -7,6 +7,8 @@ require("dotenv").config();
 // Connect to the database
 require("./config/database");
 
+const stripe = require("stripe")(process.env.STRIPE_PRIVATE_KEY);
+
 const app = express();
 
 app.use(logger("dev"));

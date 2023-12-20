@@ -12,6 +12,11 @@ import VendorDetailPage from "../VendorDetailPage/VendorDetailPage";
 import ItemsPage from "../ItemsPage/ItemsPage";
 import ItemDetailPage from "../ItemDetailPage/ItemDetailPage";
 import NavBar from "../../components/NavBar/NavBar";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe(
+  "pk_test_51OPHzBBfZizcqMjjF7yam0oq9Qs9dETmpo3JtbZ1oOwCVneISd8rGGsfyiqx6MgNTak49niGl8gGVAv7Qbhwraqd00Y4oYfy1u"
+);
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -32,6 +37,7 @@ export default function App() {
                   setUser={setUser}
                   cart={cart}
                   setCart={setCart}
+                  stripePromise={stripePromise}
                 />
               }
             />
