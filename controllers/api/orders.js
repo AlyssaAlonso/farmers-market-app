@@ -39,6 +39,8 @@ async function checkout(req, res) {
 // Create a checkout session for the cart
 async function createCheckoutSession(req, res) {
   const cart = await Order.getCart(req.user._id);
+  cart.isPaid = true;
+  await cart.save();
 
   const lineItems = cart.lineItems.map((lineItem) => ({
     price_data: {
@@ -56,8 +58,8 @@ async function createCheckoutSession(req, res) {
       payment_method_types: ["card"],
       line_items: lineItems,
       mode: "payment",
-      success_url: "http://localhost:3000/orders/",
-      cancel_url: "http://localhost:3000/orders/new",
+      success_url: `${process.env.BASE_URL}/orders/success/${cart._id}`,
+      cancel_url: `${process.env.BASE_URL}/orders/new`,
     });
 
     res.json({ sessionId: session.id });
