@@ -55,8 +55,9 @@ export default function MarketCard({ market }) {
               pathname: `/markets/${market._id}`,
               state: { marketData: market },
             }}
+            className="button-link"
           >
-            View Offerings
+            View Items
           </Link>
         </div>
       </div>

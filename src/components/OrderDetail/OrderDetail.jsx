@@ -19,23 +19,18 @@ export default function OrderDetail({
 
   return (
     <div className="OrderDetail">
-      <div className="section-heading">
-        {order.isPaid ? (
-          <span>
-            ORDER <span className="smaller">{order.orderId}</span>
-          </span>
-        ) : (
-          <span>NEW ORDER</span>
-        )}
-        <span>{new Date(order.updatedAt).toLocaleDateString()}</span>
+      <div>
+        {order.isPaid ? <h2>ORDER {order.orderId}</h2> : <h2>NEW ORDER</h2>}
+        <h3>{new Date(order.updatedAt).toLocaleDateString()}</h3>
       </div>
-      <div className="line-item-container flex-ctr-ctr flex-col scroll-y">
+
+      <div>
         {lineItems.length ? (
           <>
             {lineItems}
             <section className="total">
               {order.isPaid ? (
-                <span className="right">TOTAL&nbsp;&nbsp;</span>
+                <span>TOTAL&nbsp;&nbsp;</span>
               ) : (
                 <button
                   className="btn-sm"
@@ -46,7 +41,7 @@ export default function OrderDetail({
                 </button>
               )}
               <span>{order.totalQty}</span>
-              <span className="right">${order.orderTotal.toFixed(2)}</span>
+              <span>${order.orderTotal.toFixed(2)}</span>
             </section>
           </>
         ) : (

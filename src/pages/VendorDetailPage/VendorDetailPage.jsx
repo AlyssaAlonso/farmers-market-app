@@ -44,7 +44,7 @@ export default function VendorDetailPage({ user, setUser, cart, setCart }) {
   return (
     <>
       <h1>{vendor.name}</h1>
-      <h3>Items:</h3>
+      <p>{vendor.description}</p>
       <InventoryList
         allItems={vendorItems}
         handleAddToOrder={handleAddToOrder}

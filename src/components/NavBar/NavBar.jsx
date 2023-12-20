@@ -19,7 +19,7 @@ export default function NavBar({ user, setUser }) {
         <Navbar.Brand href="/">Wholesome Harvest</Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse>
-          <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: "190px" }}>
+          <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: "230px" }}>
             <Nav.Link href="/markets">Markets</Nav.Link>
             <Nav.Link href="/vendors">Vendors</Nav.Link>
             <Nav.Link href="/items">Items</Nav.Link>

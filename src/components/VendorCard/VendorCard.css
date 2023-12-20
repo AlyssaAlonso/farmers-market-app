@@ -1,0 +1,39 @@
+.vendor-card {
+  height: auto;
+  width: 180px;
+  margin: 0 0.5vw 35px;
+  justify-content: center;
+}
+
+.vendor-card-image {
+  background-position: center;
+  background-size: cover;
+  height: 180px;
+  width: 180px;
+  border-radius: 50%;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+}
+
+.vendor-card-content {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 180px;
+  justify-content: space-between;
+  text-align: center;
+  padding: 20px;
+  background-color: white;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.vendor-link {
+  color: black;
+  text-decoration: none;
+}
+
+.vendor-link:hover {
+  text-decoration: underline;
+}

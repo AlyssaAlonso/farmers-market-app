@@ -6,6 +6,7 @@ import * as marketsAPI from "../../utilities/markets-api";
 import * as vendorsAPI from "../../utilities/vendors-api";
 import { Link, useNavigate } from "react-router-dom";
 import InventoryList from "../../components/InventoryList/InventoryList";
+import VendorCard from "../../components/VendorCard/VendorCard";
 
 export default function MarketDetailPage({ user, setUser, cart, setCart }) {
   let { marketId } = useParams();
@@ -50,19 +51,17 @@ export default function MarketDetailPage({ user, setUser, cart, setCart }) {
 
   return (
     <>
-      <h1>{market.name}</h1>
-      <h3>Items:</h3>
+      <h1>{market.name} Farmers' Market</h1>
       <InventoryList
         allItems={marketItems}
         handleAddToOrder={handleAddToOrder}
       />
-      <br />
       <h3>Featured Vendors:</h3>
-      <ul>
-        {marketVendors.map((vendor) => (
-          <li key={vendor._id}>{vendor.name} </li>
-        ))}
-      </ul>
+      <div className="cards-container">
+        {marketVendors.map((vendor) => {
+          return <VendorCard key={vendor._id} vendor={vendor} />;
+        })}
+      </div>
     </>
   );
 }

@@ -29,6 +29,7 @@ export default function NewOrderPage({ user, setUser, cart, setCart }) {
   return (
     <>
       <main className="NewOrderPage">
+        <h1>Cart</h1>
         <OrderDetail
           order={cart}
           handleChangeQty={handleChangeQty}

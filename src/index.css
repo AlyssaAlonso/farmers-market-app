@@ -154,8 +154,16 @@ button[type="submit"] {
 
  */
 
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 nav {
   background-color: #00806c;
+  width: 100vw;
 }
 
 a.nav-link,
@@ -179,8 +187,9 @@ a.navbar-brand:hover {
 .card-container {
   height: auto;
   width: 320px;
-  box-shadow: 0px 0px 10px 2px #d0d7de;
+  /* box-shadow: 0px 0px 10px 2px #d0d7de; */
   border-radius: 20px;
+  border: 1px solid #d0d7de;
   margin: 0 0.5vw 35px;
 }
 
@@ -188,6 +197,7 @@ a.navbar-brand:hover {
   background-position: center;
   background-size: cover;
   height: 180px;
+  width: auto;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   margin: 0;
@@ -199,7 +209,7 @@ a.navbar-brand:hover {
   flex-direction: column;
   height: auto;
   min-height: 270px;
-  width: 320px;
+  width: auto;
   justify-content: space-between;
   text-align: left;
   padding: 20px;
@@ -211,4 +221,22 @@ a.navbar-brand:hover {
 .card-links {
   display: flex;
   flex-direction: row;
+}
+
+button.btn-sm,
+.button-link {
+  display: inline-block;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  background-color: #00806c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button.btn-sm:hover,
+.button-link:hover {
+  color: #d2e3c3;
 }

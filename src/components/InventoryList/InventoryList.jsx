@@ -10,7 +10,7 @@ export default function InventoryList({ allItems, handleAddToOrder }) {
   ));
   return (
     <>
-      <main className="InventoryList">{items}</main>
+      <div className="cards-container">{items}</div>
     </>
   );
 }
