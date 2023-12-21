@@ -1,17 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function VendorCard({ item }) {
-  const randomNumber = Math.floor(Math.random() * 1000); // Generating a random number
-
+export default function ItemCard({ item }) {
   return (
     <div className="card-container">
       <div
         className="card-image"
         style={{
-          background: `url('https://source.unsplash.com/collection/202618/320x180?sig=${
-            Date.now() + randomNumber
-          }')`,
+          background: `url(${item.image})`,
         }}
       ></div>
       <div className="card-content">

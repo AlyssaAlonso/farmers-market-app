@@ -17,6 +17,10 @@ const vendorSchema = new Schema(
         ref: "Market",
       },
     ],
+    image: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,

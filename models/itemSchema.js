@@ -30,6 +30,7 @@ const itemSchema = new Schema(
     vendor: { type: Schema.Types.ObjectId, ref: "Vendor" },
     category: { type: Schema.Types.ObjectId, ref: "Category" },
     price: { type: Number, required: true },
+    image: { type: String, required: true },
     reviews: [reviewSchema],
   },
   {

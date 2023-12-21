@@ -43,12 +43,17 @@ export default function VendorDetailPage({ user, setUser, cart, setCart }) {
 
   return (
     <>
-      <h1>{vendor.name}</h1>
-      <p>{vendor.description}</p>
-      <InventoryList
-        allItems={vendorItems}
-        handleAddToOrder={handleAddToOrder}
-      />
+      <main>
+        <br />
+        <h1>{vendor.name}</h1>
+        <div class="cards-container">
+          <p>{vendor.description}</p>
+        </div>
+        <InventoryList
+          allItems={vendorItems}
+          handleAddToOrder={handleAddToOrder}
+        />
+      </main>
     </>
   );
 }
