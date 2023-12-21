@@ -1,0 +1,25 @@
+.AuthPage {
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url("https://cdn.pixabay.com/photo/2023/10/27/19/49/food-8346110_1280.jpg");
+
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 30px 1vw;
+  width: 100vw;
+  height: 100vh;
+  margin-top: 0;
+  color: white;
+}
+
+.AuthPage h1 {
+  margin-top: 8vh;
+}
