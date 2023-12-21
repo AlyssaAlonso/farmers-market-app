@@ -51,6 +51,7 @@ export default function NewOrderPage({
     <>
       <div className="orders-container">
         <h1>Order Summary</h1>
+        <br />
         <OrderDetail
           order={cart}
           handleChangeQty={handleChangeQty}
