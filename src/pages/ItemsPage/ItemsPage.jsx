@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import ItemCard from "../../components/ItemCard/ItemCard";
 import * as itemsAPI from "../../utilities/items-api";
 import * as ordersAPI from "../../utilities/orders-api";
 import InventoryList from "../../components/InventoryList/InventoryList";
@@ -24,7 +23,7 @@ export default function ItemsPage({ user, setUser, cart, setCart }) {
       setCart(cart);
     }
     getCart();
-  }, []);
+  }, [setCart]);
 
   /*--- Event Handlers ---*/
   async function handleAddToOrder(itemId) {
