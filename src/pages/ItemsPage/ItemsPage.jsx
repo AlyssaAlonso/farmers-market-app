@@ -23,7 +23,7 @@ export default function ItemsPage({ user, setUser, cart, setCart }) {
       setCart(cart);
     }
     getCart();
-  }, [setCart]);
+  }, []);
 
   /*--- Event Handlers ---*/
   async function handleAddToOrder(itemId) {

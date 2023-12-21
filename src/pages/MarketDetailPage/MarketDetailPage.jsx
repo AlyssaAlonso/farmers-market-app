@@ -13,35 +13,32 @@ export default function MarketDetailPage({ user, setUser, cart, setCart }) {
   const [marketItems, setMarketItems] = useState([]);
   const [marketVendors, setMarketVendors] = useState([]);
 
-  useEffect(
-    function () {
-      async function getMarketData() {
-        const market = await marketsAPI.getById(marketId);
-        setMarket(market);
+  useEffect(function () {
+    async function getMarketData() {
+      const market = await marketsAPI.getById(marketId);
+      setMarket(market);
 
-        const vendors = await vendorsAPI.getAll();
-        const marketVendors = vendors.filter((vendor) => {
-          return vendor.markets.some((market) => market._id === marketId);
-        });
-        setMarketVendors(marketVendors);
+      const vendors = await vendorsAPI.getAll();
+      const marketVendors = vendors.filter((vendor) => {
+        return vendor.markets.some((market) => market._id === marketId);
+      });
+      setMarketVendors(marketVendors);
 
-        const items = await itemsAPI.getAll();
-        const marketItems = items.filter((item) => {
-          return marketVendors.some((vendor) => vendor._id === item.vendor._id);
-        });
-        setMarketItems(marketItems);
-      }
-      getMarketData();
+      const items = await itemsAPI.getAll();
+      const marketItems = items.filter((item) => {
+        return marketVendors.some((vendor) => vendor._id === item.vendor._id);
+      });
+      setMarketItems(marketItems);
+    }
+    getMarketData();
 
-      // Load cart (a cart is the unpaid order for the logged in user)
-      async function getCart() {
-        const cart = await ordersAPI.getCart();
-        setCart(cart);
-      }
-      getCart();
-    },
-    [marketId, setCart]
-  );
+    // Load cart (a cart is the unpaid order for the logged in user)
+    async function getCart() {
+      const cart = await ordersAPI.getCart();
+      setCart(cart);
+    }
+    getCart();
+  }, []);
 
   /*--- Event Handlers ---*/
   async function handleAddToOrder(itemId) {
@@ -53,16 +50,18 @@ export default function MarketDetailPage({ user, setUser, cart, setCart }) {
 
   return (
     <>
-      <h1>{market.name} Farmers' Market</h1>
-      <InventoryList
-        allItems={marketItems}
-        handleAddToOrder={handleAddToOrder}
-      />
-      <h3>Featured Vendors:</h3>
       <div className="cards-container">
-        {marketVendors.map((vendor) => {
-          return <VendorCard key={vendor._id} vendor={vendor} />;
-        })}
+        <h1>{market.name} Farmers' Market</h1>
+        <InventoryList
+          allItems={marketItems}
+          handleAddToOrder={handleAddToOrder}
+        />
+        <h3>Featured Vendors:</h3>
+        <div className="cards-container">
+          {marketVendors.map((vendor) => {
+            return <VendorCard key={vendor._id} vendor={vendor} />;
+          })}
+        </div>
       </div>
     </>
   );

@@ -7,22 +7,19 @@ export default function ItemDetailPage({ user, setUser, cart, setCart }) {
   let { itemId } = useParams();
   const [item, setItem] = useState({});
 
-  useEffect(
-    function () {
-      async function getItem() {
-        const item = await itemsAPI.getById(itemId);
-        setItem(item);
-      }
-      getItem();
+  useEffect(function () {
+    async function getItem() {
+      const item = await itemsAPI.getById(itemId);
+      setItem(item);
+    }
+    getItem();
 
-      async function getCart() {
-        const cart = await ordersAPI.getCart();
-        setCart(cart);
-      }
-      getCart();
-    },
-    [itemId, setCart]
-  );
+    async function getCart() {
+      const cart = await ordersAPI.getCart();
+      setCart(cart);
+    }
+    getCart();
+  }, []);
 
   async function handleAddToOrder(itemId) {
     // 1. Call the addItemToCart function in ordersAPI, passing to it the itemId, and assign the resolved promise to a variable named cart.

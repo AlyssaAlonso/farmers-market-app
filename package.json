@@ -2,9 +2,6 @@
   "name": "farmers-market-app",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": "v18.18.0"
-  },
   "dependencies": {
     "@stripe/stripe-js": "^2.2.2",
     "@testing-library/jest-dom": "^5.16.5",
@@ -48,5 +45,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "http://localhost:3001"
 }

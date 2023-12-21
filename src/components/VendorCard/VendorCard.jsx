@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./VendorCard.css";
 
 export default function VendorCard({ vendor }) {
-  const randomNumber = Math.floor(Math.random() * 1000); // Generating a random number
+  const randomNumber = Math.floor(Math.random() * 1000);
 
   return (
     <Link

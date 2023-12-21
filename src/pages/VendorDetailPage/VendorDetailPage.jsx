@@ -10,29 +10,26 @@ export default function VendorDetailPage({ user, setUser, cart, setCart }) {
   const [vendor, setVendor] = useState({});
   const [vendorItems, setVendorItems] = useState([]);
 
-  useEffect(
-    function () {
-      async function getVendorData() {
-        const vendor = await vendorsAPI.getById(vendorId);
-        setVendor(vendor);
+  useEffect(function () {
+    async function getVendorData() {
+      const vendor = await vendorsAPI.getById(vendorId);
+      setVendor(vendor);
 
-        const items = await itemsAPI.getAll();
-        const vendorItems = items.filter(
-          (item) => item.vendor._id === vendor._id
-        );
-        setVendorItems(vendorItems);
-      }
-      getVendorData();
+      const items = await itemsAPI.getAll();
+      const vendorItems = items.filter(
+        (item) => item.vendor._id === vendor._id
+      );
+      setVendorItems(vendorItems);
+    }
+    getVendorData();
 
-      // Load cart (a cart is the unpaid order for the logged in user)
-      async function getCart() {
-        const cart = await ordersAPI.getCart();
-        setCart(cart);
-      }
-      getCart();
-    },
-    [setCart, vendorId]
-  );
+    // Load cart (a cart is the unpaid order for the logged in user)
+    async function getCart() {
+      const cart = await ordersAPI.getCart();
+      setCart(cart);
+    }
+    getCart();
+  }, []);
 
   /*--- Event Handlers ---*/
   async function handleAddToOrder(itemId) {
