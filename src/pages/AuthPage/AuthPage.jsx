@@ -7,7 +7,7 @@ export default function AuthPage({ setUser }) {
   const [showSignUp, setShowSignUp] = useState(false);
 
   return (
-    <main class="AuthPage">
+    <main className="AuthPage">
       <h1 className="wholesome-harvest">Wholesome Harvest</h1>
       <br />
       {showSignUp ? (
